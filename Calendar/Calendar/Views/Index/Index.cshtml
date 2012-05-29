@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="calendar">
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //fullCalendar,注意大小写
+        $("#calendar").fullCalendar({
+            theme: true,
+            eventSources: ['https://www.google.com/calendar/feeds/huangfeng050%40gmail.com/public/basic'],
+            currentTimezone: 'Asia/shanghai',
+            header: {
+                left: 'prev next today',
+                center: 'title  agendaDay,agendaWeek,month',
+                right: ''
+            },
+            firstDay: '0', //0 is sunday
+            weekends: true,
+            weekMode: 'fixed',
+            height: $(this).height() - 30,
+            //对day,week有效
+            //                contentHeight: 130,
+            aspectRatio: 100,
+            allDaySlot: true,
+            allDayText: '全天', //default:'all-day
+            axisFormat: 'HH:mm tt',
+            //                slotMinutes: 21, //每个间隔相差的时间
+            dayClick: function (date, allDay, jsEvent, view) {
+                //                    if (allDay) {
+                //                        alert('Clicked on the entire day:' + date);
+                //                    } else {
+                //                        alert('Clicked on the slot:' + date);
+                //                    }
+
+                //                    alert('Coordidates:' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+                //                    alert('Current view:' + view.name);
+
+                $("#dialog").dialog();
+
+                //                    $(this).css('background-color', 'red');
+
+            },
+            //                eventMouseover: function (event, jsEvent, view) {
+            //                    alert('eventMouseover');
+            //                },
+            //                eventMouseout: function (event, jsEvent, view) {
+            //                    alert('eventMouseout');
+            //                },
+            selectable: true,
+            selectHelper: true,
+            select: function (startDate, endDate, allDay, jsEvent, view) {
+                alert(startDate + ',' + endDate);
+            },
+            loading: function (isloading, view) {
+
+            }
+        });
+        //            $("#calendar").fullCalendar('destroy');
+        //change view
+        //            $("#calendar").fullCalendar("changeView", "agendaDay");
+        firstHour: 3
+    });
+
+ 
+</script>
